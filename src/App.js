@@ -1,23 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import TradePairDetails from "./components/TradePairDetails";
+import TradePairsList from "./components/TradePairsList";
+import { useSelector } from "react-redux";
 
 function App() {
+  const selectedSymbol = useSelector((state) => state.rootState.selectedSymbol);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {selectedSymbol ? <TradePairDetails symbol={selectedSymbol} /> : ""}
+      <TradePairsList />
     </div>
   );
 }
